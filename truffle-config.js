@@ -22,6 +22,7 @@ const HDWalletProvider = require("@truffle/hdwallet-provider");
 
 const fs = require("fs");
 const secret = fs.readFileSync(".secret").toString().trim();
+const apiKey = fs.readFileSync(".apikey").toString().trim();
 
 module.exports = {
   /**
@@ -39,7 +40,7 @@ module.exports = {
       provider: () =>
         new HDWalletProvider(
           secret, // either private key or mnemonic
-          "wss://kovan.infura.io/ws/v3/d3feee9fca65445dace36a8ccf75bc1e"
+          `wss://kovan.infura.io/ws/v3/${apiKey}`
         ),
       network_id: 42,
       gas: 4000000,
